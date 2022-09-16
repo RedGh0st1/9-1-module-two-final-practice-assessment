@@ -1,0 +1,24 @@
+body {
+  background-color: darkgrey;
+  font-family: Verdana;
+  margin: 0%;
+  padding: 0%;
+  box-sizing: border-box;
+}
+
+header {
+  height: 150px;
+  width: 100%;
+  background-color: #000000;
+  border-radius: ;
+  color: rgb(255, 255, 255);
+  text-align: center;
+}
+
+hr {
+  width: 50%;
+}
+
+h4 {
+  font-family: italic;
+}

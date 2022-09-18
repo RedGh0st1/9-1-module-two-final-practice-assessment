@@ -70,10 +70,11 @@ form.addEventListener("submit", (event) => {
   }
   const shoutOut = event.target.shoutOut.value;
   if (shoutOut === "") {
+    const error2 = document.createElement("p");
     error2.classList.add("err2");
     error2.innerText = `Please add a shoutout for  ${shoutOut}}`;
     error2.style.color = "red";
     error2.style.fontSize = "13px";
-    document.querySelector("");
+    document.querySelector("").append(error2);
   }
 });

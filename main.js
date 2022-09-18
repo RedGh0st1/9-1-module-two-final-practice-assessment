@@ -50,12 +50,10 @@ select.addEventListener("change", (event) => {
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
- 
+
   if (document.querySelector(".err2")) {
-    document.querySelector(".err2");
- 
+    document.querySelector(".err2").remove();
   }
-    
 
   // console.log(event.target.shoutout.value);
   const li = document.createElement("li");
@@ -70,13 +68,12 @@ form.addEventListener("submit", (event) => {
     error.style.fontSize = "13px";
     document.querySelector("section").append(error);
   }
-const shoutout = event.target.shoutOut.value
-  if (shoutout === "") {
-    error2.classList.add("err2")
-    error2.innerText = `Please Select a ${}`
+  const shoutOut = event.target.shoutOut.value;
+  if (shoutOut === "") {
+    error2.classList.add("err2");
+    error2.innerText = `Please add a shoutout for  ${shoutOut}}`;
     error2.style.color = "red";
     error2.style.fontSize = "13px";
-
-    
+    document.querySelector("");
   }
 });

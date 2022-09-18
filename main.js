@@ -79,3 +79,7 @@ form.addEventListener("submit", (event) => {
     document.querySelector("form").append(error2);
   }
 });
+
+const resetBtn = document.createElement("button");
+resetBtn.setAttribute("id", "reset-shoutouts");
+resetBtn;

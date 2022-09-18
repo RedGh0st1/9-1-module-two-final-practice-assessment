@@ -29,7 +29,7 @@ select.addEventListener("change", (event) => {
     document.querySelector(".err").remove();
   }
 
-  fetce(`${url}`)
+  fetch(`${url}`)
     .then((res) => res.json())
     .then((resJson) => {
       const people = resJson;
@@ -55,7 +55,6 @@ form.addEventListener("submit", (event) => {
     document.querySelector(".err2").remove();
   }
 
-  // console.log(event.target.shoutout.value);
   const li = document.createElement("li");
   li.innerHTML = `<strong>${select.value}</strong>: ${event.target.shoutout.value}`;
   ul.append(li);
@@ -68,13 +67,15 @@ form.addEventListener("submit", (event) => {
     error.style.fontSize = "13px";
     document.querySelector("section").append(error);
   }
-  const shoutOut = event.target.shoutOut.value;
+
+  const shoutOut = `${event.target.shoutout.value}`;
+
   if (shoutOut === "") {
     const error2 = document.createElement("p");
     error2.classList.add("err2");
-    error2.innerText = `Please add a shoutout for  ${shoutOut}}`;
+    error2.innerText = `Please add a shoutout for ${select.value}`;
     error2.style.color = "red";
     error2.style.fontSize = "13px";
-    document.querySelector("").append(error2);
+    document.querySelector("form").append(error2);
   }
 });

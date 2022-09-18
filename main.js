@@ -1,22 +1,72 @@
 const form = document.querySelector("form");
 const select = document.querySelector("select");
 const url = "https://ghibliapi.herokuapp.com/people";
-const info = document.querySelector(".info");
+const info = document.querySelector("#info");
+const section = document.querySelector("section");
+const ul = document.querySelector("ul");
 
-select.addEventListener("click", (event) => {
+fetch(`${url}`)
+  .then((res) => res.json())
+  .then((resJson) => {
+    console.log(resJson);
+
+    const randomPeople = resJson;
+    randomPeople.forEach((element) => {
+      const option = document.createElement("option");
+      const names = element.name;
+      option.textContent = names;
+      option.value = names;
+      select.append(option);
+    });
+  })
+  .catch((error) => console.log(error));
+
+select.addEventListener("change", (event) => {
+  event.preventDefault();
+  // console.log(event);
+
+  if (document.querySelector(".err")) {
+    document.querySelector(".err").remove();
+  }
+
   fetch(`${url}`)
     .then((res) => res.json())
     .then((resJson) => {
-      console.log(resJson);
-
-      const randomPeople = resJson;
-      randomPeople.forEach((element) => {
-        const option = document.createElement("option");
-        const name = element.name;
-        option.textContent = name;
-        option.value = name;
-        select.append(option);
+      const people = resJson;
+      console.log(select.value);
+      people.forEach((element) => {
+        if (select.value === element.name) {
+          document.querySelector("#info").innerHTML = `
+         <h4>Name: ${element.name}</h4>
+        <p>age: ${element.age}</p>
+        <p>eye color: ${element.eye_color}</p>
+        <p>Hair Color: ${element.hair_color}</p>`;
+          //  console.log(name, age, eye, hair);
+        }
       });
     })
     .catch((error) => console.log(error));
+});
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  if
+  console.log(event.target.shoutout.value);
+  const li = document.createElement("li");
+  li.innerHTML = `<strong>${select.value}</strong>: ${event.target.shoutout.value}`;
+  ul.append(li);
+
+  if (select.value === "") {
+    const error = document.createElement("p");
+    error.classList.add("err");
+    error.innerText = `Please Select a Person`;
+    error.style.color = "red";
+    error.style.fontSize = "13px";
+    document.querySelector("section").append(error);
+  }
+const shoutout = event.target.shoutOut.value
+  if (shoutout === "") {
+    
+  }
 });

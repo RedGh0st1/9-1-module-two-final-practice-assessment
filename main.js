@@ -80,15 +80,15 @@ form.addEventListener("submit", (event) => {
   }
 });
 
-const list = document.createElement("li");
 const resetBtn = document.createElement("button");
 resetBtn.setAttribute("id", "reset-shoutouts");
 resetBtn.type = "submit";
 resetBtn.innerText = `Remove Shoutouts`;
 document.querySelector(".section").append(resetBtn);
-ul.append(list);
 
 resetBtn.addEventListener("click", (event) => {
-  // const list = document.createElement("li");
-  list.remove();
+  const list = document.querySelectorAll("li");
+  list.forEach((element) => {
+    element.remove();
+  });
 });
